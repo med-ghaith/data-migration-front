@@ -5,25 +5,16 @@ export class ContentTypes {
   public static APPLICATION_XML: string = "application/xml";
 }
 
-/**
- * Interface implemented by all services.
- */
 export interface Service {
   init(): void;
 }
 
-/**
- * Base class for all services.
- */
 export abstract class BaseService implements Service {
-  // protected config: ConfigService | null = null;
-
   private apiBaseHref: string = "";
-  // private newApiBaseHref: string = '';
 
   public init(): void {
     this.apiBaseHref = "";
-    // this.newApiBaseHref = this.config?.newArtifactsUrl() || '';
+
     if (this.apiBaseHref.endsWith("/")) {
       this.apiBaseHref = this.apiBaseHref.substring(
         0,
@@ -103,6 +94,7 @@ export abstract class BaseService implements Service {
     }
 
     const config: AxiosRequestConfig = this.axiosConfig("get", url, options);
+    console.log(config);
     return axios
       .request(config)
       .then((response) => {

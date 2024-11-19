@@ -32,7 +32,7 @@ export const ConnectorPlugins: React.FC<ConnectorPluginsProps> = (props) => {
   const appLayoutContext = React.useContext(AppLayoutContext);
   const { cluster: clusterUrl, addNewNotification } = appLayoutContext;
   const connectorService = Services.getConnectorService();
-
+  console.log(clusterUrl);
   const getConnectorsPlugins = useFetchApi<ConnectorPlugin[]>(
     clusterUrl,
     connectorService.getConnectorPlugins,
